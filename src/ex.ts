@@ -29,12 +29,12 @@ import {
 // Что в этом листинге:
 //
 // + Создание унифицированных классов ExStringRecord/ExTokensRecord для хранения различных типов значений
-// + Расширение разделяемого SharedSingleton с добавлением собственных параметром конструктору и реализация методов.
+// + Расширение разделяемого SharedSingleton с добавлением собственных параметров конструктору и реализация методов.
 // + Реализация метода установки значений I18nRegistry.set(), преобразующего входной тип в унифицированное значение.
 // + Реализация метода I18nRoot.t(), преобразующего унифицированное значение в выходную строку.
 // + Определение I18nRoot.createInstance() для создания корневого экземпляра.
 //
-// Большая половина строк это банальное копирование с заменой типов зависимых SharedSingleton/I18nRegistry/I18nRoot
+// Большая половина строк это банальное копирование с заменой типов зависимых от реализаций SharedSingleton/I18nRegistry/I18nRoot.
 //
 
 /**
@@ -166,7 +166,7 @@ class ExSingleton<TLocale extends string, TKey extends string> extends SharedSin
 class ExI18nImpl<TLocale extends string, TKey extends string> extends I18nRegistry<TLocale, TKey, TValue> {
   // NOTE
   // Классам I18nRoot/I18nRegistry нежелательно иметь собственных конструкторов.
-  // Их цель привязаться к пространсту имен, но не хранить данные в собственных полях кроме разделяемого ExSingleton.
+  // Их цель привязаться к пространству имен, но не хранить данные в собственных полях кроме разделяемого ExSingleton.
   // Здесь, в ExI18nImpl, мы ничего не будем делать с конструктором, но сделаем это в ExI18n.
 
   // NOTE
@@ -244,7 +244,7 @@ class ExI18n<TLocale extends string, TKey extends string> extends I18nRoot<TLoca
   // NOTE
   // Нам не нужно переопределять конструктор чтобы получить доступ к this._shared:ExSingleton,
   // но мы не получим поддержку типов TypeScript, и доступ к кастомным методам ExSingleton,
-  // придется либо глушить ошибки либо приводить тип (this._shared as ExSingleton).myMethod()
+  // придется либо глушить ошибки TS либо приводить тип (this._shared as ExSingleton).myMethod()
   // Но мы можем задекларировать тип не используя переопределения конструктора.
   // Копируем сигнатуру базового класса с добавлением declare и обновленным типом ExSingleton:
   declare protected readonly _shared: ExSingleton<TLocale, TKey>
@@ -291,7 +291,7 @@ class ExI18n<TLocale extends string, TKey extends string> extends I18nRoot<TLoca
   /**
    * Создает корневой экземпляр `i18n`.
    *
-   * @param options Обязательными являются только два параметра {@link TOptions.locale} и {@link TOptions.onError()}.
+   * @param options Обязательными являются только два параметра {@link TOptionsEx.locale} и {@link TOptionsEx.onError()}.
    */
   static createInstance<TLocale extends string, TKey extends string> (options: TOptionsEx<TLocale, string>): ExI18n<TLocale, TKey> {
     const config = parseOptions(options)

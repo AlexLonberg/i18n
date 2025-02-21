@@ -174,9 +174,9 @@ SharedSingleton._rgFactory() // -> I18nRegistry
 Пользовательская реализация `I18nRoot/I18nRegistry`, должна получить экземпляры из `SharedSingleton` и вывести желаемые типы ключей:
 
 ```ts
-I18nRoot.getRoot<TKey>() // -> I18nRoot<TLocale, TKey>
+I18nRoot.getRoot<TKey>()      // -> I18nRoot<TLocale, TKey>
 I18nRoot.getNamespace<TKey>() // -> I18nRoot<TLocale, TKey>
-I18nRoot.register<TKey>() // -> I18nRegistry<TLocale, TKey>
+I18nRoot.register<TKey>()     // -> I18nRegistry<TLocale, TKey>
 ```
 
 Внутреннее свойство `_shared`, ничего не знает о пользовательском классе `SharedSingleton` и его методах:

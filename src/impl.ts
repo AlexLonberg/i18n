@@ -138,7 +138,7 @@ class I18n<TLocale extends string, TKey extends string> extends I18nRoot<TLocale
   /**
    * Создает корневой экземпляр `i18n`.
    *
-   * @param options Обязательными являются только два параметра {@link TOptions.locale} и {@link TOptions.onError()}.
+   * @param options Обязательными являются только два параметра {@link TOptionsEx.locale} и {@link TOptionsEx.onError()}.
    */
   static createInstance<TLocale extends string, TKey extends string> (options: TOptionsEx<TLocale, string>): I18n<TLocale, TKey> {
     const config = parseOptions(options)
