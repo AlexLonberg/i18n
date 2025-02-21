@@ -1,0 +1,40 @@
+{
+  "name": "@lonberg/i18n",
+  "version": "0.1.0",
+  "description": "i18n | internationalization",
+  "author": "Alexander Lonberg <alexlonberg@gmail.com>",
+  "homepage": "https://github.com/AlexLonberg/i18n",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexLonberg/i18n.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "i18n"
+  ],
+  "scripts": {
+    "test": "vitest run --coverage --config vitest.config.ts",
+    "predist": "node ./scripts/dist.js",
+    "dist": "tsc --project tsconfig.dist.json"
+  },
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@stylistic/eslint-plugin": "^4.0.0",
+    "@vitest/browser": "^3.0.6",
+    "@vitest/coverage-istanbul": "^3.0.6",
+    "eslint": "^9.20.1",
+    "nodejs-pkg-tools": "^0.5.0",
+    "playwright": "^1.50.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "vitest": "^3.0.6"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "main": "./src/index.ts"
+}
