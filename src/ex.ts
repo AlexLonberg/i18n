@@ -12,7 +12,6 @@ import {
   type TErrorDetail,
   isString,
   isObject,
-  concatNamespaceWithKey,
   templateToTokens,
   parseOptions,
   errorMessages,
@@ -185,7 +184,7 @@ class ExI18nImpl<TLocale extends string, TKey extends string> extends I18nRegist
   }
   override getNamespace<T extends string = TKey> (namespace: string): ExI18n<TLocale, T> {
     // @ts-expect-error
-    return this._shared.getNamespace(concatNamespaceWithKey(this.namespace, namespace))
+    return this._shared.getNamespace(namespace)
   }
 
   // NOTE Придумай любые set<Name>() методы установки значений. Имена можно выбирать из предпочтений.
@@ -261,7 +260,7 @@ class ExI18n<TLocale extends string, TKey extends string> extends I18nRoot<TLoca
   }
   override getNamespace<T extends string = TKey> (namespace: string): ExI18n<TLocale, T> {
     // @ts-expect-error
-    return this._shared.getNamespace(concatNamespaceWithKey(this.namespace, namespace))
+    return this._shared.getNamespace(namespace)
   }
 
   // NOTE

@@ -44,6 +44,8 @@ test('I18n more examples', () => {
   // Ключи в Namespase можно типизировать и сузить до ожидаемых значений
   const i18n = rootI18n.getNamespace<'en' | 'ru'>('settings.locale')
   expect(i18n.namespace).toBe('settings.locale')
+  // Независимо от уровня, getNamespace() и register() возвращают пространство имен от корня.
+  expect(i18n.getNamespace('xyz').namespace).toBe('xyz')
 
   // Регистрируем I18nRegistry, позволяющий устанавливать/менять переводы
   const registry = rootI18n.register('settings')! // может возвратить null, если есть о

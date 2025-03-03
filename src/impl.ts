@@ -18,7 +18,6 @@ import {
   type TErrorDetail,
   isString,
   parseOptions,
-  concatNamespaceWithKey,
   SharedSingleton,
   I18nRoot,
   I18nRegistry
@@ -77,7 +76,7 @@ class I18nImpl<TLocale extends string, TKey extends string> extends I18nRegistry
   }
   override getNamespace<T extends string = TKey> (namespace: string): I18n<TLocale, T> {
     // @ts-expect-error
-    return this._shared.getNamespace(concatNamespaceWithKey(this.namespace, namespace))
+    return this._shared.getNamespace(namespace)
   }
 
   // TODO Обнови и/или добавь методы регистрации значений I18nRegistry.set().
@@ -118,7 +117,7 @@ class I18n<TLocale extends string, TKey extends string> extends I18nRoot<TLocale
   }
   override getNamespace<T extends string = TKey> (namespace: string): I18n<TLocale, T> {
     // @ts-expect-error
-    return this._shared.getNamespace(concatNamespaceWithKey(this.namespace, namespace))
+    return this._shared.getNamespace(namespace)
   }
 
   // TODO Обнови и/или добавь методы получения значений I18n.t().

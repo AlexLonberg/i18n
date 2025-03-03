@@ -323,13 +323,10 @@ abstract class I18nRoot<TLocale extends string, TKey extends string, TValue> {
 
   // TODO Реализуй этот метод скопировав код ниже - не забудь поменяй I18nRoot на расширенный класс.
   // getNamespace<T extends string = TKey> (namespace: string): I18nRoot<TLocale, T, TValue> {
-  //   return this._shared.getNamespace(concatNamespaceWithKey(this.namespace, namespace))
+  //   return this._shared.getNamespace(namespace)
   // }
   /**
-   * Возвращает `namespace` относительно текущего.
-   *
-   * Если нужно получить `namespace` относительно корня, и вы не знаете где находитесь,
-   * используйте {@link getRoot()} + {@link getNamespace()}.
+   * Возвращает `namespace` относительно корня.
    *
    * Обратите внимание: Пространство имен могло быть еще не зарегистрировано и до момента внесения изменений нельзя
    * получить `I18n.t()`.
